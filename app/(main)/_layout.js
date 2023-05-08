@@ -11,7 +11,9 @@ const Layout = () => {
 
     return (
         <ThemeProvider value={(scheme === 'light') ? MyLightTheme : DarkTheme}>
-            <Tabs screenOptions={{ tabBarActiveTintColor: "#123456", tabBarIconStyle: { color: '#123456' }, headerTitleAlign: 'center' }}>
+            <Tabs screenOptions={{
+                headerTitleAlign: 'center', tabBarIconStyle: { color: colors.primary }
+            }}>
                 <Tabs.Screen name='browse' options={{
                     headerTitle: 'Browse',
                     tabBarLabel: "Browse",
@@ -24,7 +26,6 @@ const Layout = () => {
                 }} />
                 <Tabs.Screen name='scale' options={{
                     headerTitle: 'Weight Converter',
-
                     tabBarLabel: "Scale", tabBarIcon: (tabInfo) => {
                         return <Icon name='scale-balance' type='material-community' color={tabInfo.focused ? colors.primary : 'grey'} />
                     },

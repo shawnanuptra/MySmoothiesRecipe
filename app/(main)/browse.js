@@ -3,19 +3,11 @@ import { SafeAreaView, Text, View } from "react-native"
 
 const Browse = () => {
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
-            <Tabs.Screen
-                options={
-                    {
-                        headerTitle: "Browse",
-                        headerShadowVisible: false,
-                    }
-                }
-            >
-                <View>
-                    <Text>Testing pls</Text>
-                </View>
-            </Tabs.Screen>
+        <SafeAreaView style={{ flex: 1 }}>
+
+            <View>
+                <Text>Testing pls</Text>
+            </View>
         </SafeAreaView>
     )
 }

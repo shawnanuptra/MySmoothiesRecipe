@@ -1,8 +1,9 @@
-import { ButtonGroup, Switch, makeStyles } from "@rneui/themed"
-import { SafeAreaView, StyleSheet, Text, View } from "react-native"
-import { Avatar, Divider } from "@rneui/base"
+import { ButtonGroup } from "@rneui/themed"
+import { SafeAreaView, StyleSheet, Text, View, Switch } from "react-native"
+import { Avatar } from "@rneui/base"
 import { useState } from "react"
 import { useTheme } from "@react-navigation/native"
+import { isEnabled } from "react-native/Libraries/Performance/Systrace"
 
 const Preferences = () => {
     const { colors } = useTheme();
@@ -27,7 +28,7 @@ const Preferences = () => {
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <Text style={styles.bodyLarge}>{isDarkTheme ? 'On' : 'Off'}</Text>
-                    <Switch value={isDarkTheme} onValueChange={setIsDarkTheme} color="green"></Switch>
+                    <Switch value={isDarkTheme} onValueChange={setIsDarkTheme} trackColor={{ true: '#b2ffa8' }} thumbColor={isDarkTheme ? colors.primary : 'grey'}></Switch>
                 </View>
             </View>
             <View style={styles.settingItem}>
@@ -42,7 +43,7 @@ const Preferences = () => {
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <Text style={styles.bodyLarge}>{(changeFont) ? 'Professional' : 'Casual'}</Text>
-                    <Switch value={changeFont} onValueChange={setChangeFont} color="green"></Switch>
+                    <Switch value={changeFont} onValueChange={setChangeFont} trackColor={{ true: '#b2ffa8' }} thumbColor={changeFont ? colors.primary : 'grey'}></Switch>
                 </View>
             </View>
 
@@ -59,10 +60,11 @@ const Preferences = () => {
                 onPress={(value) => {
                     setSelectedIndex(value);
                 }}
-                containerStyle={{ borderRadius: 30 }}
-                buttonStyle={{}}
-                selectedButtonStyle={{ backgroundColor: colors.background }}
-                selectedTextStyle={{ fontWeight: 'bold', color: 'grey' }}
+                containerStyle={{ borderRadius: 30, borderColor: 'black' }}
+                buttonContainerStyle={{ borderColor: 'black' }}
+                selectedButtonStyle={{ backgroundColor: colors.card, borderColor: 'black' }}
+                selectedTextStyle={{ color: 'black' }}
+                buttonStyle={{ borderColor: 'black' }}
             ></ButtonGroup>
 
 

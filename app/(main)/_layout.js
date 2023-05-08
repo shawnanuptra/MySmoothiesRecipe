@@ -1,4 +1,4 @@
-import { Icon } from '@rneui/base'
+import { Icon } from '@rneui/themed'
 import { DarkTheme, ThemeProvider, useTheme } from '@react-navigation/native'
 import { Tabs } from 'expo-router'
 import { MyLightTheme } from './util/constants'
@@ -7,7 +7,6 @@ import { useColorScheme } from 'react-native'
 const Layout = () => {
     // first, get user's preferences
     const scheme = useColorScheme()
-
     const { colors } = useTheme();
 
     return (
@@ -26,7 +25,9 @@ const Layout = () => {
                 <Tabs.Screen name='scale' options={{
                     headerTitle: 'Weight Converter',
 
-                    tabBarLabel: "Scale", tabBarIcon: (tabInfo) => <Icon name='scale-balance' type='material-community' color={tabInfo.focused ? colors.primary : 'grey'} />,
+                    tabBarLabel: "Scale", tabBarIcon: (tabInfo) => {
+                        return <Icon name='scale-balance' type='material-community' color={tabInfo.focused ? colors.primary : 'grey'} />
+                    },
                 }} />
                 <Tabs.Screen name='preferences' options={{
                     headerTitle: 'Preferences',

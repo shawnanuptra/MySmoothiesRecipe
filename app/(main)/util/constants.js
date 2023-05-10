@@ -10,3 +10,12 @@ export const MyLightTheme = {
         notification: 'red',
     }
 }
+
+// would rather use interface; but only available in TypeScript
+export const Smoothie = {
+    name: null,
+    description: null,
+    imageUrl: null,
+    ingredients: null,
+    favourited: false
+}

@@ -2,11 +2,16 @@
 import { useTheme } from "@react-navigation/native";
 import { Image, Avatar, Button } from "@rneui/themed";
 import { useSearchParams } from "expo-router"
-import { SafeAreaView, Text, View } from "react-native"
+import { FlatList, SafeAreaView, Text, View } from "react-native"
+// import { useDispatch, useSelector } from "react-redux";
+// import { addSmoothie, selectSmoothie } from "../../redux/smoothieSlice";
 
 const ItemPage = () => {
     const { colors } = useTheme();
     const params = useSearchParams();
+    // const newSmoothie = { name: 'New Smoothie', description: 'New SMoothie', imageUrl: 'strawberry-smiles.jpg', ingredients: ['stry (500g)', 'appleups)', '1 froa'], favourited: true };
+    // const smoothies = useSelector(selectSmoothie)
+    // const dispatch = useDispatch();
 
     return (
         <SafeAreaView style={{ flex: 1, paddingHorizontal: 30 }}>
@@ -40,6 +45,11 @@ const ItemPage = () => {
                     {params.ingredients}
                 </Text>
             </View>
+            {/* <FlatList
+                data={smoothies}
+                renderItem={({ item }) => <Text>{item.description}</Text>}
+                keyExtractor={item => item.name}
+            /> */}
         </SafeAreaView>
     )
 }

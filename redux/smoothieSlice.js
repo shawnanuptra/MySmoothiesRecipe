@@ -9,7 +9,6 @@ export const smoothieSlice = createSlice({
     reducers: {
         addSmoothie: (state, action) => {
             state.smoothies.push(action.payload)
-            state.smoothies += 1;
         }
     }
 })

@@ -1,6 +1,6 @@
-import { Button, Icon } from '@rneui/themed'
+import { Icon } from '@rneui/themed'
 import { DarkTheme, ThemeProvider, useTheme } from '@react-navigation/native'
-import { Stack, Tabs, useRouter } from 'expo-router'
+import { Tabs, useRouter } from 'expo-router'
 import { MyLightTheme } from './util/constants'
 import { Pressable, useColorScheme, Text } from 'react-native'
 import { Provider } from 'react-redux'
@@ -12,7 +12,9 @@ const Layout = () => {
     const scheme = useColorScheme()
     const router = useRouter()
     const { colors } = useTheme();
-
+    // { name: 'Strawberry Smiles', description: 'Refreshing strawberry smoothie with apple', ingredients: 'strawberry (500g), apple juice (3 cups), 1 frozen banana', favourited: false },
+    // { name: 'Green Jersey', description: 'Very fresh apple and mango juice', ingredients: 'apple juice (3 cups), 1 mango', favourited: false },
+    // ]
     return (
         <Provider store={store}>
             <PersistGate loading={<Text>Loading..</Text>} persistor={persistor}>
@@ -45,6 +47,13 @@ const Layout = () => {
                         <Tabs.Screen name='index' options={{ href: null }} />
                         <Tabs.Screen name='item' options={{
                             href: null, tabBarStyle: { display: 'none' }, headerTitle: '', headerLeft: () => (
+                                <Pressable hitSlop={20} onPress={() => router.replace('/')} style={{ marginLeft: 16 }}>
+                                    <Icon name='arrow-back' type='material' color='black' />
+                                </Pressable>
+                            )
+                        }} />
+                        <Tabs.Screen name='add' options={{
+                            href: null, tabBarStyle: { display: 'none' }, headerTitle: 'Add Smoothie', headerLeft: () => (
                                 <Pressable hitSlop={20} onPress={() => router.back()} style={{ marginLeft: 16 }}>
                                     <Icon name='arrow-back' type='material' color='black' />
                                 </Pressable>

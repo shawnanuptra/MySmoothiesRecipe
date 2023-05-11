@@ -3,7 +3,6 @@ import { SafeAreaView, StyleSheet, Text, View, Switch } from "react-native"
 import { Avatar } from "@rneui/base"
 import { useState } from "react"
 import { useTheme } from "@react-navigation/native"
-import { isEnabled } from "react-native/Libraries/Performance/Systrace"
 
 const Preferences = () => {
     const { colors } = useTheme();

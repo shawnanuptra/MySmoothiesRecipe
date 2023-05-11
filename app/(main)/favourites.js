@@ -1,14 +1,18 @@
-import { Tabs } from 'expo-router'
 import React from 'react'
-import { View, Text, SafeAreaView } from 'react-native'
+import { SafeAreaView, FlatList } from 'react-native'
+import { useSelector } from 'react-redux';
+import ListTile from '../../components/ListTile';
+
 
 const Favourites = () => {
+    const smoothies = useSelector((state) => state.smoothie.smoothies);
     return (
-        <SafeAreaView>
-            <Tabs.Screen options={{ headerTitle: "Favourites" }}>
-
-                <Text>THis is favourites</Text>
-            </Tabs.Screen>
+        <SafeAreaView style={{ flex: 1, flexGrow: 1 }}>
+            <FlatList
+                data={smoothies.filter(el => el.favourited === true)}
+                renderItem={({ item, index }) => <ListTile item={item} />}
+                keyExtractor={smoothie => smoothie.name}
+            />
         </SafeAreaView>
     )
 }

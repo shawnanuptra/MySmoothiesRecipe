@@ -1,6 +1,5 @@
 import smoothieReducer from "./smoothieSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import favouritesReducer from "./favouritesSlice";
 import themeReducer from './themeSlice'
 import persistReducer from "redux-persist/es/persistReducer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -16,7 +15,6 @@ const persistConfig = {
 // combine reducers from slices into one, to pass to persistReducer
 const rootReducer = combineReducers({
     smoothie: smoothieReducer,
-    favourites: favouritesReducer,
     theme: themeReducer
 })
 

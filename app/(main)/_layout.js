@@ -1,12 +1,13 @@
-import { Icon } from '@rneui/themed'
+import { Button, Icon } from '@rneui/themed'
 import { DarkTheme, ThemeProvider, useTheme } from '@react-navigation/native'
-import { Tabs } from 'expo-router'
+import { Stack, Tabs, useRouter } from 'expo-router'
 import { MyLightTheme } from './util/constants'
-import { useColorScheme } from 'react-native'
+import { Pressable, useColorScheme } from 'react-native'
 
 const Layout = () => {
     // first, get user's preferences
     const scheme = useColorScheme()
+    const router = useRouter()
     const { colors } = useTheme();
 
     return (
@@ -34,8 +35,15 @@ const Layout = () => {
                     headerTitle: 'Preferences',
                     tabBarLabel: "Prefs", tabBarIcon: (tabInfo) => <Icon name='tune' type='material' color={tabInfo.focused ? colors.primary : 'grey'} />,
                 }} />
-                {/* Hides the index tab */}
+                {/* Hides the index and ItemScreen tabs */}
                 <Tabs.Screen name='index' options={{ href: null }} />
+                <Tabs.Screen name='item' options={{
+                    href: null, tabBarStyle: { display: 'none' }, headerTitle: '', headerLeft: () => (
+                        <Pressable hitSlop={20} onPress={() => router.back()} style={{ marginLeft: 16 }}>
+                            <Icon name='arrow-back' type='material' color='black' />
+                        </Pressable>
+                    )
+                }} />
             </Tabs>
         </ThemeProvider>
     )

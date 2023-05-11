@@ -1,12 +1,14 @@
 import { useTheme } from '@react-navigation/native'
 import { ListItem, Avatar, Icon, Divider } from '@rneui/themed'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import { Pressable } from 'react-native'
 
 const ListTile = ({ item, imgSource }) => {
   const { colors } = useTheme()
+  const router = useRouter();
   return (
-    <ListItem containerStyle={{ borderBottomWidth: 1, }} bottomDivider onPress={() => { console.log('list item') }}>
+    <ListItem containerStyle={{ borderBottomWidth: 1, }} bottomDivider onPress={() => router.push({ pathname: '/item', params: item })}>
       {/* Change  */}
       <Avatar
         size={120}

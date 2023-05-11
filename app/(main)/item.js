@@ -1,16 +1,12 @@
 
 import { useTheme } from "@react-navigation/native";
-import { Icon, Image, Avatar } from "@rneui/themed";
-import { Stack, Tabs, useRouter, useSearchParams } from "expo-router"
-import { useEffect } from "react";
+import { Image, Avatar, Button } from "@rneui/themed";
+import { useSearchParams } from "expo-router"
 import { SafeAreaView, Text, View } from "react-native"
-import { ceil } from "react-native-reanimated";
 
 const ItemPage = () => {
     const { colors } = useTheme();
     const params = useSearchParams();
-    console.log(params.name)
-
 
     return (
         <SafeAreaView style={{ flex: 1, paddingHorizontal: 30 }}>

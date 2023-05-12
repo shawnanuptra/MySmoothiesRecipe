@@ -6,6 +6,7 @@ import { SafeAreaView, Text, View } from "react-native"
 import { useSelector, useDispatch } from "react-redux";
 import { selectSmoothie, toggleAsFav } from "../../redux/smoothieSlice";
 import { Divider } from "@rneui/base";
+import { selectIsSerif } from "../../redux/themeSlice";
 
 const ItemPage = () => {
     // try catch because router.back() rerenders the params for some reason
@@ -15,6 +16,7 @@ const ItemPage = () => {
         const dispatch = useDispatch();
         const smoothies = useSelector(selectSmoothie)
         const smoothie = smoothies.find(el => el.name === params.name)
+        const isSerif = useSelector(selectIsSerif)
         return (
             <SafeAreaView style={{ flex: 1, paddingHorizontal: 30 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 15 }}>
@@ -52,7 +54,7 @@ const ItemPage = () => {
         )
     } catch (error) {
         return (<SafeAreaView>
-            <Text>LOL</Text>
+            <Text>{error.toString()}</Text>
         </SafeAreaView>)
     }
 

@@ -10,6 +10,19 @@
 		},
 		"name": "MySmoothiesRecipe",
 		"slug": "MySmoothiesRecipe",
-		"android": { "softwareKeyboardLayoutMode": "pan" }
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#E1FFD1"
+			},
+			"softwareKeyboardLayoutMode": "pan",
+			"package": "com.anuptra.MySmoothiesRecipe"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "4f615fe5-669c-46d6-a598-78cb6fb1668d"
+			}
+		},
+		"assetBundlePatterns": ["**/*"]
 	}
 }

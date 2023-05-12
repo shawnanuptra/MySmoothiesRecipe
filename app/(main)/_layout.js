@@ -23,7 +23,7 @@ const Layout = () => {
         // Redux provider
         <Provider store={store}>
             {/* Redux Persist provider */}
-            <PersistGate loading={<Text>Loading..</Text>} persistor={persistor}>
+            <PersistGate loading={null} persistor={persistor}>
                 {/* Tabs layout */}
                 {/* Should probably be a <Stack />, and use another _layout for <Tabs> */}
                 {/* Just so nested navigation is possible, which makes the code cleaner */}

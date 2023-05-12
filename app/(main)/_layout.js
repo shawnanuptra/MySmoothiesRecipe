@@ -3,25 +3,31 @@ import { DarkTheme, ThemeProvider, useTheme } from '@react-navigation/native'
 import { Tabs, useRouter } from 'expo-router'
 import { MyLightTheme } from './util/constants'
 import { Pressable, useColorScheme, Text } from 'react-native'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import store, { persistor } from '../../redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
+import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font'
+import { useCallback, useEffect } from 'react'
+import { selectIsSerif } from '../../redux/themeSlice'
+
+
 
 const Layout = () => {
     // first, get user's preferences
     const scheme = useColorScheme()
     const router = useRouter()
     const { colors } = useTheme();
-    // { name: 'Strawberry Smiles', description: 'Refreshing strawberry smoothie with apple', ingredients: 'strawberry (500g), apple juice (3 cups), 1 frozen banana', favourited: false },
-    // { name: 'Green Jersey', description: 'Very fresh apple and mango juice', ingredients: 'apple juice (3 cups), 1 mango', favourited: false },
-    // ]
+
+
+
     return (
         <Provider store={store}>
             <PersistGate loading={<Text>Loading..</Text>} persistor={persistor}>
 
                 <ThemeProvider value={(scheme === 'light') ? MyLightTheme : DarkTheme}>
                     <Tabs screenOptions={{
-                        headerTitleAlign: 'center', tabBarIconStyle: { color: colors.primary }
+                        headerTitleAlign: 'center', tabBarIconStyle: { color: colors.primary },
                     }}>
                         <Tabs.Screen name='browse' options={{
                             headerTitle: 'Browse',

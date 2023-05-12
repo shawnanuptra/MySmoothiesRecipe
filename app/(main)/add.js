@@ -3,8 +3,9 @@ import { Input, Button } from "@rneui/themed"
 import { useRouter } from "expo-router"
 import { useState } from "react"
 import { SafeAreaView, ScrollView } from "react-native"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addSmoothie } from "../../redux/smoothieSlice"
+import { selectIsSerif } from "../../redux/themeSlice"
 
 const Add = () => {
     const { colors } = useTheme();
@@ -12,7 +13,7 @@ const Add = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [ingredients, setIngredients] = useState('')
-
+    const isSerif = useSelector(selectIsSerif)
     const dispatch = useDispatch()
     return (
         <SafeAreaView style={{ flex: 1, padding: 30 }}>
@@ -23,7 +24,9 @@ const Add = () => {
                     defaultValue={''}
                     value={name}
                     label='Name'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+
                 />
 
                 <Input
@@ -33,7 +36,9 @@ const Add = () => {
                     multiline
                     numberOfLines={3}
                     label='Description'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+
                 />
 
                 <Input
@@ -43,11 +48,14 @@ const Add = () => {
                     multiline
                     numberOfLines={5}
                     label='Ingredients'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
                 />
 
 
-                <Button title={'Add Smoothie'} color={colors.primary} containerStyle={{ borderRadius: 50 }} buttonStyle={{ padding: 20 }}
+                <Button title={'Add Smoothie'}
+                    titleStyle={(isSerif) ? 'serif' : 'sans-serif'}
+                    color={colors.primary} containerStyle={{ borderRadius: 50 }} buttonStyle={{ padding: 20 }}
                     onPress={() => { dispatch(addSmoothie({ 'name': name, 'description': description, 'ingredients': ingredients, 'favourited': false })); router.back() }}
                     style={{ marginTop: 50 }}
                 />

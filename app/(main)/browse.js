@@ -1,7 +1,7 @@
 import { useTheme } from "@react-navigation/native"
 import { FAB } from "@rneui/themed"
 import { useRouter } from "expo-router"
-import { FlatList, SafeAreaView, View } from "react-native"
+import { FlatList, SafeAreaView, View, Text } from "react-native"
 import ListTile from "../../components/ListTile"
 import { useSelector } from "react-redux"
 import { selectSmoothie } from "../../redux/smoothieSlice"
@@ -13,11 +13,6 @@ const Browse = () => {
         <SafeAreaView style={{ flex: 1, flexGrow: 1 }}>
             {/* FlatList from storage of 'Menu Items' */}
             <View>
-                {/* <ListTile item={
-
-                    { name: 'Strawberry Smiles', description: 'Refreshing strawberry smoothie with apple', ingredients: 'strawberry (500g), apple juice (3 cups), 1 frozen banana', favourited: false }
-
-                }></ListTile> */}
                 <FlatList
                     data={smoothies}
                     renderItem={({ item, index }) => <ListTile item={item} />}

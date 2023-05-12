@@ -18,7 +18,8 @@ const ItemPage = () => {
         return (
             <SafeAreaView style={{ flex: 1, paddingHorizontal: 30 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 15 }}>
-                    <Text style={{ fontSize: 24 }}>{smoothie.name.charAt(0).toUpperCase() + smoothie.name.slice(1)}</Text>
+                    <Text style={{ fontSize: 24, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    >{smoothie.name.charAt(0).toUpperCase() + smoothie.name.slice(1)}</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
 
@@ -32,7 +33,7 @@ const ItemPage = () => {
                 </View>
                 <Divider />
                 <View style={{ marginVertical: 30 }}>
-                    <Text style={{ fontSize: 22 }}>
+                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
                         Description
                     </Text>
                     <Text>
@@ -40,10 +41,10 @@ const ItemPage = () => {
                     </Text>
                 </View>
                 <View>
-                    <Text style={{ fontSize: 22 }}>
+                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
                         Ingredients
                     </Text>
-                    <Text>
+                    <Text style={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
                         {smoothie.ingredients}
                     </Text>
                 </View>

@@ -3,6 +3,8 @@ import { View, Text, SafeAreaView, TextInput, StyleSheet } from 'react-native'
 import { Divider } from '@rneui/base'
 import { Button } from '@rneui/themed'
 import { useTheme } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { selectIsSerif } from '../../redux/themeSlice'
 const Scale = () => {
     const { colors } = useTheme()
     const multiplier = 453.59237;
@@ -34,15 +36,23 @@ const Scale = () => {
     const [lbs, setLbs] = useState(0)
     const [oz, setOz] = useState(0)
 
+    const isSerif = useSelector(selectIsSerif)
+
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
             <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '100%' }}>
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={styles.title}>Grams</Text>
+                    <Text style={{
+                        fontSize: 24,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>Grams</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
 
                         <TextInput
-                            style={styles.customInputField}
+                            style={{
+                                fontSize: 48,
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                            }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
                                 setGrams(value);
@@ -52,7 +62,10 @@ const Scale = () => {
                             keyboardType='decimal-pad'
                             value={grams.toString()}
                         />
-                        <Text style={styles.unit}>g</Text>
+                        <Text style={{
+                            fontSize: 24,
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        }}>g</Text>
                     </View>
                 </View>
                 <Divider
@@ -63,10 +76,16 @@ const Scale = () => {
 
                 />
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={styles.title}>Lbs & Oz</Text>
+                    <Text style={{
+                        fontSize: 24,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>Lbs & Oz</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
                         <TextInput
-                            style={styles.customInputField}
+                            style={{
+                                fontSize: 48,
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                            }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
                                 setLbs(value)
@@ -76,9 +95,15 @@ const Scale = () => {
                             keyboardType='decimal-pad'
                             value={lbs.toString()}
                         />
-                        <Text style={styles.unit}>lbs</Text>
+                        <Text style={{
+                            fontSize: 24,
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        }}>lbs</Text>
                         <TextInput
-                            style={styles.customInputField}
+                            style={{
+                                fontSize: 48,
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                            }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
                                 setOz(value)
@@ -88,7 +113,10 @@ const Scale = () => {
                             keyboardType='numeric'
                             value={oz.toString()}
                         />
-                        <Text style={styles.unit}>oz</Text>
+                        <Text style={{
+                            fontSize: 24,
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        }}>oz</Text>
                     </View>
                 </View>
 

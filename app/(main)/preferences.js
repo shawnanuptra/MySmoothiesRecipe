@@ -3,14 +3,18 @@ import { SafeAreaView, StyleSheet, Text, View, Switch } from "react-native"
 import { Avatar } from "@rneui/base"
 import { useState } from "react"
 import { useTheme } from "@react-navigation/native"
+import { useDispatch, useSelector } from "react-redux"
+import { selectIsSerif, toggleIsSerif } from "../../redux/themeSlice"
 
 const Preferences = () => {
     const { colors } = useTheme();
 
     const [changeFont, setChangeFont] = useState(false)
-    const [changeSize, setchangeSize] = useState(false)
     const [isDarkTheme, setIsDarkTheme] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState();
+
+    const isSerif = useSelector(selectIsSerif);
+    const dispatch = useDispatch();
 
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "flex-start", alignItems: "flex-start", flexDirection: "column", backgroundColor: 'white' }}>
@@ -23,10 +27,16 @@ const Preferences = () => {
                         icon={{ name: "moon", type: "feather", color: colors.primary }}
                         containerStyle={styles.avatarBgColor}
                     />
-                    <Text style={styles.bodyLarge}>Dark Theme</Text>
+                    <Text style={{
+                        fontSize: 16,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>Dark Theme</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <Text style={styles.bodyLarge}>{isDarkTheme ? 'On' : 'Off'}</Text>
+                    <Text style={{
+                        fontSize: 16,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>{isDarkTheme ? 'On' : 'Off'}</Text>
                     <Switch value={isDarkTheme} onValueChange={setIsDarkTheme} trackColor={{ true: '#b2ffa8' }} thumbColor={isDarkTheme ? colors.primary : 'grey'}></Switch>
                 </View>
             </View>
@@ -38,18 +48,27 @@ const Preferences = () => {
                         icon={{ name: "format-font", type: "material-community", color: colors.primary }}
                         containerStyle={styles.avatarBgColor}
                     />
-                    <Text style={styles.bodyLarge}>Change Font</Text>
+                    <Text style={{
+                        fontSize: 16,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>Change Font</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <Text style={styles.bodyLarge}>{(changeFont) ? 'Professional' : 'Casual'}</Text>
-                    <Switch value={changeFont} onValueChange={setChangeFont} trackColor={{ true: '#b2ffa8' }} thumbColor={changeFont ? colors.primary : 'grey'}></Switch>
+                    <Text style={{
+                        fontSize: 16,
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    }}>{(isSerif) ? 'Professional' : 'Casual'}</Text>
+                    <Switch value={isSerif} onValueChange={(value) => dispatch(toggleIsSerif())} trackColor={{ true: '#b2ffa8' }} thumbColor={isSerif ? colors.primary : 'grey'}></Switch>
                 </View>
             </View>
 
 
             <View style={{ marginLeft: 20, marginBottom: 10 }}>
 
-                <Text style={styles.bodyLarge}>Font Size</Text>
+                <Text style={{
+                    fontSize: 16,
+                    fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                }}>Font Size</Text>
             </View>
 
 
@@ -64,6 +83,7 @@ const Preferences = () => {
                 selectedButtonStyle={{ backgroundColor: colors.card, borderColor: 'black' }}
                 selectedTextStyle={{ color: 'black' }}
                 buttonStyle={{ borderColor: 'black' }}
+                textStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
             ></ButtonGroup>
 
 
@@ -74,9 +94,6 @@ const Preferences = () => {
 
 
 const styles = StyleSheet.create({
-    bodyLarge: {
-        fontSize: 16,
-    },
     settingItem: {
         alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 10,
         // borderRadius: 30, 

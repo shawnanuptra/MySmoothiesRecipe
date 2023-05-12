@@ -1,7 +1,7 @@
 import { Icon, withTheme } from '@rneui/themed'
 import { DarkTheme, ThemeProvider, useTheme } from '@react-navigation/native'
 import { Tabs, useRouter } from 'expo-router'
-import { MyLightTheme } from './util/constants'
+import { MyLightTheme } from '../../util/constants'
 import { Pressable, useColorScheme, Text } from 'react-native'
 import { Provider, useDispatch, useSelector } from 'react-redux'
 import store, { persistor } from '../../redux/store'

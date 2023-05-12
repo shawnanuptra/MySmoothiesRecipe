@@ -5,7 +5,7 @@ import { useState } from "react"
 import { DarkTheme, useTheme } from "@react-navigation/native"
 import { useDispatch, useSelector } from "react-redux"
 import { selectFontIsLarge, selectIsSerif, selectTheme, toggleFontSize, toggleIsSerif, toggleTheme } from "../../redux/themeSlice"
-import { MyLightTheme } from "./util/constants"
+import { MyLightTheme } from "../../util/constants"
 
 const Preferences = () => {
 

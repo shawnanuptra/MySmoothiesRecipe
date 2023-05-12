@@ -3,7 +3,7 @@ import { SafeAreaView, FlatList } from 'react-native'
 import { useSelector } from 'react-redux';
 import ListTile from '../../components/ListTile';
 import { DarkTheme } from '@react-navigation/native';
-import { MyLightTheme } from './util/constants';
+import { MyLightTheme } from '../../util/constants';
 import { selectTheme } from '../../redux/themeSlice';
 
 

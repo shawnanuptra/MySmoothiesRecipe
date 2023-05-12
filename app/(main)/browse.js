@@ -6,7 +6,7 @@ import ListTile from "../../components/ListTile"
 import { useSelector } from "react-redux"
 import { selectSmoothie } from "../../redux/smoothieSlice"
 import { selectTheme } from "../../redux/themeSlice"
-import { MyLightTheme } from "./util/constants"
+import { MyLightTheme } from "../../util/constants"
 
 const Browse = () => {
     const router = useRouter();

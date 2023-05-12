@@ -5,7 +5,7 @@ import { Button } from '@rneui/themed'
 import { DarkTheme, useTheme } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import { selectFontIsLarge, selectIsSerif, selectTheme } from '../../redux/themeSlice'
-import { MyLightTheme } from './util/constants'
+import { MyLightTheme } from '../../util/constants'
 const Scale = () => {
     // multiplier to convert lbs to grams
     const multiplier = 453.59237;

@@ -6,7 +6,7 @@ import { SafeAreaView, ScrollView } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { addSmoothie, selectSmoothie } from "../../redux/smoothieSlice"
 import { selectFontIsLarge, selectIsSerif, selectTheme } from "../../redux/themeSlice"
-import { MyLightTheme } from "./util/constants"
+import { MyLightTheme } from "../../util/constants"
 
 const Add = () => {
     const router = useRouter();

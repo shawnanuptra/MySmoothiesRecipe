@@ -6,7 +6,7 @@ import { Alert, Pressable } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAsFav } from '../redux/smoothieSlice'
 import { selectFontIsLarge, selectIsSerif, selectTheme } from '../redux/themeSlice'
-import { MyLightTheme } from '../app/(main)/util/constants'
+import { MyLightTheme } from '../util/constants'
 
 const ListTile = ({ item }) => {
   const router = useRouter();

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectSmoothie, toggleAsFav } from "../../redux/smoothieSlice";
 import { Divider } from "@rneui/base";
 import { selectFontIsLarge, selectIsSerif, selectTheme } from "../../redux/themeSlice";
-import { MyLightTheme } from "./util/constants";
+import { MyLightTheme } from "../../util/constants";
 
 const ItemPage = () => {
     // try catch because router.back() rerenders the params for some reason

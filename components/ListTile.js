@@ -22,7 +22,7 @@ const ListTile = ({ item }) => {
       <Divider color="black" orientation="vertical" />
       <Pressable hitSlop={15} onPress={() => dispatch(toggleAsFav(item))} style={{ alignSelf: 'stretch', justifyContent: 'center' }}>
         {/* Change Icon to 'heart' if it's favourited */}
-        <Icon name={(item.favourited) ? 'heart' : 'heart-outline'} type="material-community" color={colors.primary} />
+        <Icon name={(item.favourited) ? 'heart' : 'heart-outline'} type="material-community" color={'green'} />
       </Pressable>
     </ListItem>
   )

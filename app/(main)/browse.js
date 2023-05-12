@@ -8,7 +8,8 @@ import { selectSmoothie } from "../../redux/smoothieSlice"
 
 const Browse = () => {
     const router = useRouter();
-    const smoothies = useSelector((state) => state.smoothie.smoothies);
+    const smoothies = useSelector(selectSmoothie);
+    const { dark, colors } = useTheme();
     return (
         <SafeAreaView style={{ flex: 1, flexGrow: 1 }}>
             {/* FlatList from storage of 'Menu Items' */}
@@ -24,6 +25,7 @@ const Browse = () => {
                 size="large"
                 style={{ position: "absolute", bottom: 30, right: 30 }}
                 onPress={() => router.push('/add')}
+                color={dark ? 'green' : ''}
             />
         </SafeAreaView >
     )

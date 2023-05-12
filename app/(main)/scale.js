@@ -44,14 +44,18 @@ const Scale = () => {
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
                         fontSize: 24,
-                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                        color: colors.text
                     }}>Grams</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
 
                         <TextInput
                             style={{
                                 fontSize: 48,
-                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
+                                borderColor: colors.text,
+                                color: colors.text
+
                             }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
@@ -64,13 +68,16 @@ const Scale = () => {
                         />
                         <Text style={{
                             fontSize: 24,
-                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                            color: colors.text
+
                         }}>g</Text>
                     </View>
                 </View>
                 <Divider
                     style={{ margin: 20, alignSelf: 'stretch' }}
-                    color="#000"
+                    color={colors.text}
+
                     width={1}
                     orientation="horizontal"
 
@@ -78,13 +85,16 @@ const Scale = () => {
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
                         fontSize: 24,
-                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                        color: colors.text
                     }}>Lbs & Oz</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
                         <TextInput
                             style={{
                                 fontSize: 48,
-                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
+                                borderColor: colors.text,
+                                color: colors.text
                             }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
@@ -97,12 +107,15 @@ const Scale = () => {
                         />
                         <Text style={{
                             fontSize: 24,
-                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                            color: colors.text
                         }}>lbs</Text>
                         <TextInput
                             style={{
                                 fontSize: 48,
-                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1
+                                fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
+                                borderColor: colors.text,
+                                color: colors.text
                             }}
                             onChangeText={val => {
                                 let value = cleanInput(val);
@@ -115,7 +128,8 @@ const Scale = () => {
                         />
                         <Text style={{
                             fontSize: 24,
-                            fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                            fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                            color: colors.text
                         }}>oz</Text>
                     </View>
                 </View>
@@ -132,19 +146,5 @@ const Scale = () => {
         </SafeAreaView >
     )
 }
-
-const styles = StyleSheet.create({
-    customInputField: {
-        fontSize: 48,
-        fontWeight: 'bold',
-        borderBottomWidth: 1
-    },
-    title: {
-        fontSize: 24
-    },
-    unit: {
-        fontSize: 24
-    }
-})
 
 export default Scale

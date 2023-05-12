@@ -20,7 +20,7 @@ const ItemPage = () => {
         return (
             <SafeAreaView style={{ flex: 1, paddingHorizontal: 30 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 15 }}>
-                    <Text style={{ fontSize: 24, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    <Text style={{ fontSize: 24, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
                     >{smoothie.name.charAt(0).toUpperCase() + smoothie.name.slice(1)}</Text>
                 </View>
                 <View style={{ alignItems: 'center' }}>
@@ -29,24 +29,24 @@ const ItemPage = () => {
                         onPress={() => dispatch(toggleAsFav(smoothie))}
                         rounded
                         size={40}
-                        icon={{ name: (smoothie.favourited) ? 'heart' : 'heart-outline', type: 'material-community', color: colors.primary }}
-                        containerStyle={{ position: "absolute", bottom: 0, right: 0, borderColor: colors.primary, borderWidth: 1, backgroundColor: (smoothie.favourited) ? colors.card : colors.background }}
+                        icon={{ name: (smoothie.favourited) ? 'heart' : 'heart-outline', type: 'material-community', color: 'green' }}
+                        containerStyle={{ position: "absolute", bottom: 0, right: 0, borderColor: 'green', borderWidth: 1, backgroundColor: (smoothie.favourited) ? colors.card : colors.background }}
                     />
                 </View>
                 <Divider />
                 <View style={{ marginVertical: 30 }}>
-                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
+                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}>
                         Description
                     </Text>
-                    <Text>
+                    <Text style={{ color: colors.text, fontFamily: (isSerif) ? 'serif' : 'sans-serif', }}>
                         {smoothie.description}
                     </Text>
                 </View>
                 <View>
-                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
+                    <Text style={{ fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}>
                         Ingredients
                     </Text>
-                    <Text style={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>
+                    <Text style={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}>
                         {smoothie.ingredients}
                     </Text>
                 </View>

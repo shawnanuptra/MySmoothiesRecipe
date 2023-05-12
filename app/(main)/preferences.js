@@ -17,19 +17,19 @@ const Preferences = () => {
     const dispatch = useDispatch();
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "flex-start", alignItems: "flex-start", flexDirection: "column", backgroundColor: 'white' }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: "flex-start", alignItems: "flex-start", flexDirection: "column" }}>
 
             <View style={styles.settingItem}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <Avatar
                         size={40}
                         rounded
-                        icon={{ name: "moon", type: "feather", color: colors.primary }}
+                        icon={{ name: "moon", type: "feather", color: 'green' }}
                         containerStyle={styles.avatarBgColor}
                     />
                     <Text style={{
                         fontSize: 16,
-                        fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                     }}>Dark Theme</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -37,7 +37,7 @@ const Preferences = () => {
                         fontSize: 16,
                         fontFamily: (isSerif) ? 'serif' : 'sans-serif'
                     }}>{isDarkTheme ? 'On' : 'Off'}</Text>
-                    <Switch value={isDarkTheme} onValueChange={setIsDarkTheme} trackColor={{ true: '#b2ffa8' }} thumbColor={isDarkTheme ? colors.primary : 'grey'}></Switch>
+                    <Switch value={isDarkTheme} onValueChange={setIsDarkTheme} trackColor={{ true: '#b2ffa8' }} thumbColor={isDarkTheme ? 'green' : 'grey'}></Switch>
                 </View>
             </View>
             <View style={styles.settingItem}>
@@ -45,7 +45,7 @@ const Preferences = () => {
                     <Avatar
                         size={40}
                         rounded
-                        icon={{ name: "format-font", type: "material-community", color: colors.primary }}
+                        icon={{ name: "format-font", type: "material-community", color: 'green' }}
                         containerStyle={styles.avatarBgColor}
                     />
                     <Text style={{
@@ -58,7 +58,7 @@ const Preferences = () => {
                         fontSize: 16,
                         fontFamily: (isSerif) ? 'serif' : 'sans-serif'
                     }}>{(isSerif) ? 'Professional' : 'Casual'}</Text>
-                    <Switch value={isSerif} onValueChange={(value) => dispatch(toggleIsSerif())} trackColor={{ true: '#b2ffa8' }} thumbColor={isSerif ? colors.primary : 'grey'}></Switch>
+                    <Switch value={isSerif} onValueChange={(value) => dispatch(toggleIsSerif())} trackColor={{ true: '#b2ffa8' }} thumbColor={isSerif ? 'green' : 'grey'}></Switch>
                 </View>
             </View>
 
@@ -67,7 +67,8 @@ const Preferences = () => {
 
                 <Text style={{
                     fontSize: 16,
-                    fontFamily: (isSerif) ? 'serif' : 'sans-serif'
+                    fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                    color: colors.text
                 }}>Font Size</Text>
             </View>
 

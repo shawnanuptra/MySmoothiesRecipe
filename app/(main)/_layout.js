@@ -17,15 +17,14 @@ const Layout = () => {
     // first, get user's preferences
     const scheme = useColorScheme()
     const router = useRouter()
-    const { colors } = useTheme();
-
+    const { dark, colors } = useTheme();
 
 
     return (
         <Provider store={store}>
             <PersistGate loading={<Text>Loading..</Text>} persistor={persistor}>
 
-                <ThemeProvider value={(scheme === 'light') ? MyLightTheme : DarkTheme}>
+                <ThemeProvider value={DarkTheme}>
                     <Tabs screenOptions={{
                         headerTitleAlign: 'center', tabBarIconStyle: { color: colors.primary },
                     }}>
@@ -53,15 +52,15 @@ const Layout = () => {
                         <Tabs.Screen name='index' options={{ href: null }} />
                         <Tabs.Screen name='item' options={{
                             href: null, tabBarStyle: { display: 'none' }, headerTitle: '', headerLeft: () => (
-                                <Pressable hitSlop={20} onPress={() => router.replace('/')} style={{ marginLeft: 16 }}>
-                                    <Icon name='arrow-back' type='material' color='black' />
+                                <Pressable hitSlop={20} onPress={() => router.replace('/')} style={{ marginLeft: 16, }}>
+                                    <Icon name='arrow-back' type='material' color={colors.text} />
                                 </Pressable>
                             )
                         }} />
                         <Tabs.Screen name='add' options={{
                             href: null, tabBarStyle: { display: 'none' }, headerTitle: 'Add Smoothie', headerLeft: () => (
                                 <Pressable hitSlop={20} onPress={() => router.back()} style={{ marginLeft: 16 }}>
-                                    <Icon name='arrow-back' type='material' color='black' />
+                                    <Icon name='arrow-back' type='material' color={'black'} />
                                 </Pressable>
                             )
                         }} />

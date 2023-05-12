@@ -24,8 +24,8 @@ const Add = () => {
                     defaultValue={''}
                     value={name}
                     label='Name'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
-                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
 
                 />
 
@@ -36,8 +36,8 @@ const Add = () => {
                     multiline
                     numberOfLines={3}
                     label='Description'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
-                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
 
                 />
 
@@ -48,8 +48,8 @@ const Add = () => {
                     multiline
                     numberOfLines={5}
                     label='Ingredients'
-                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
-                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}
+                    labelStyle={{ fontSize: 24, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
+                    inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
                 />
 
 

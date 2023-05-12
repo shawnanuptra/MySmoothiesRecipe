@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { View, Text, SafeAreaView, TextInput, StyleSheet } from 'react-native'
 import { Divider } from '@rneui/base'
 import { Button } from '@rneui/themed'
-import { useTheme } from '@react-navigation/native'
+import { DarkTheme, useTheme } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import { selectFontIsLarge, selectIsSerif } from '../../redux/themeSlice'
+import { selectFontIsLarge, selectIsSerif, selectTheme } from '../../redux/themeSlice'
+import { MyLightTheme } from './util/constants'
 const Scale = () => {
-    const { colors } = useTheme()
     const multiplier = 453.59237;
 
     const [gToLbs, setGToLbs] = useState(true)
@@ -14,12 +14,12 @@ const Scale = () => {
         if (gToLbs) {
             let value = grams / multiplier
             let lbs = Math.trunc(value);
-            let oz = ((value - lbs) * 16).toFixed(2)
+            let oz = ((value - lbs) * 16).toFixed(1)
 
             setLbs(lbs)
             setOz(oz)
         } else {
-            setGrams((((oz / 16) + lbs * 1) * multiplier).toFixed(2))
+            setGrams((((oz / 16) + lbs * 1) * multiplier).toFixed(1))
         }
     }
 
@@ -38,10 +38,12 @@ const Scale = () => {
 
     const isSerif = useSelector(selectIsSerif)
     const fontIsLarge = useSelector(selectFontIsLarge)
+    const isDarkTheme = useSelector(selectTheme)
+    const { colors } = (isDarkTheme) ? DarkTheme : MyLightTheme;
 
 
     return (
-        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.background }}>
             <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '100%' }}>
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
@@ -140,8 +142,8 @@ const Scale = () => {
             <View style={{ flex: 4 / 5 }}>
                 <Button
                     size='lg'
-                    buttonStyle={{ backgroundColor: colors.primary, borderRadius: 50 }}
-                    containerStyle={{ width: '60%', alignSelf: 'center' }}
+                    buttonStyle={{ backgroundColor: 'green', borderRadius: 50 }}
+                    containerStyle={{ width: '60%', alignSelf: 'center', borderRadius: 50 }}
                     onPress={() => convert(gToLbs)}
                     titleStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontSize: (fontIsLarge) ? 20 : 16 }}
                 >Convert</Button>

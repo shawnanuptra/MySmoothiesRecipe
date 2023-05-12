@@ -1,23 +1,25 @@
-import { useTheme } from "@react-navigation/native"
+import { DarkTheme, useTheme } from "@react-navigation/native"
 import { Input, Button } from "@rneui/themed"
 import { useRouter } from "expo-router"
 import { useState } from "react"
 import { SafeAreaView, ScrollView } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import { addSmoothie } from "../../redux/smoothieSlice"
-import { selectFontIsLarge, selectIsSerif } from "../../redux/themeSlice"
+import { addSmoothie, selectSmoothie } from "../../redux/smoothieSlice"
+import { selectFontIsLarge, selectIsSerif, selectTheme } from "../../redux/themeSlice"
+import { MyLightTheme } from "./util/constants"
 
 const Add = () => {
-    const { colors } = useTheme();
     const router = useRouter();
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [ingredients, setIngredients] = useState('')
     const isSerif = useSelector(selectIsSerif)
     const fontIsLarge = useSelector(selectFontIsLarge)
+    const isDarkTheme = useSelector(selectTheme)
+    const { colors } = (isDarkTheme) ? DarkTheme : MyLightTheme;
     const dispatch = useDispatch()
     return (
-        <SafeAreaView style={{ flex: 1, padding: 30 }}>
+        <SafeAreaView style={{ flex: 1, padding: 30, backgroundColor: colors.background }}>
             <ScrollView>
 
                 <Input
@@ -56,7 +58,7 @@ const Add = () => {
 
                 <Button title={'Add Smoothie'}
                     titleStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontSize: (fontIsLarge) ? 20 : 16 }}
-                    color={colors.primary} containerStyle={{ borderRadius: 50 }} buttonStyle={{ padding: 20 }}
+                    color={'green'} containerStyle={{ borderRadius: 50 }} buttonStyle={{ padding: 20 }}
                     onPress={() => { dispatch(addSmoothie({ 'name': name, 'description': description, 'ingredients': ingredients, 'favourited': false })); router.back() }}
                     style={{ marginTop: 50 }}
                 />

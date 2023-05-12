@@ -24,7 +24,7 @@ const Layout = () => {
         <Provider store={store}>
             <PersistGate loading={<Text>Loading..</Text>} persistor={persistor}>
 
-                <ThemeProvider value={DarkTheme}>
+                <ThemeProvider value={(scheme === 'dark') ? DarkTheme : MyLightTheme}>
                     <Tabs screenOptions={{
                         headerTitleAlign: 'center', tabBarIconStyle: { color: colors.primary },
                     }}>

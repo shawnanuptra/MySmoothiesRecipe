@@ -4,7 +4,7 @@ import { Divider } from '@rneui/base'
 import { Button } from '@rneui/themed'
 import { useTheme } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import { selectIsSerif } from '../../redux/themeSlice'
+import { selectFontIsLarge, selectIsSerif } from '../../redux/themeSlice'
 const Scale = () => {
     const { colors } = useTheme()
     const multiplier = 453.59237;
@@ -37,13 +37,15 @@ const Scale = () => {
     const [oz, setOz] = useState(0)
 
     const isSerif = useSelector(selectIsSerif)
+    const fontIsLarge = useSelector(selectFontIsLarge)
+
 
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
             <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '100%' }}>
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
-                        fontSize: 24,
+                        fontSize: (fontIsLarge) ? 28 : 24,
                         fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                         color: colors.text
                     }}>Grams</Text>
@@ -51,7 +53,7 @@ const Scale = () => {
 
                         <TextInput
                             style={{
-                                fontSize: 48,
+                                fontSize: (fontIsLarge) ? 52 : 48,
                                 fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
                                 borderColor: colors.text,
                                 color: colors.text
@@ -67,7 +69,7 @@ const Scale = () => {
                             value={grams.toString()}
                         />
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: (fontIsLarge) ? 28 : 24,
                             fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                             color: colors.text
 
@@ -84,14 +86,14 @@ const Scale = () => {
                 />
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{
-                        fontSize: 24,
+                        fontSize: (fontIsLarge) ? 28 : 24,
                         fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                         color: colors.text
                     }}>Lbs & Oz</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
                         <TextInput
                             style={{
-                                fontSize: 48,
+                                fontSize: (fontIsLarge) ? 52 : 48,
                                 fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
                                 borderColor: colors.text,
                                 color: colors.text
@@ -106,13 +108,13 @@ const Scale = () => {
                             value={lbs.toString()}
                         />
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: (fontIsLarge) ? 28 : 24,
                             fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                             color: colors.text
                         }}>lbs</Text>
                         <TextInput
                             style={{
-                                fontSize: 48,
+                                fontSize: (fontIsLarge) ? 52 : 48,
                                 fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontWeight: 'bold', borderBottomWidth: 1,
                                 borderColor: colors.text,
                                 color: colors.text
@@ -127,7 +129,7 @@ const Scale = () => {
                             value={oz.toString()}
                         />
                         <Text style={{
-                            fontSize: 24,
+                            fontSize: (fontIsLarge) ? 28 : 24,
                             fontFamily: (isSerif) ? 'serif' : 'sans-serif',
                             color: colors.text
                         }}>oz</Text>
@@ -139,8 +141,9 @@ const Scale = () => {
                 <Button
                     size='lg'
                     buttonStyle={{ backgroundColor: colors.primary, borderRadius: 50 }}
-                    containerStyle={{ width: '30%', alignSelf: 'center' }}
+                    containerStyle={{ width: '60%', alignSelf: 'center' }}
                     onPress={() => convert(gToLbs)}
+                    titleStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontSize: (fontIsLarge) ? 20 : 16 }}
                 >Convert</Button>
             </View>
         </SafeAreaView >

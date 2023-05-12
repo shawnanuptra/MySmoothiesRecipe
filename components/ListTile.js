@@ -5,19 +5,20 @@ import React from 'react'
 import { Pressable } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAsFav } from '../redux/smoothieSlice'
-import { selectIsSerif } from '../redux/themeSlice'
+import { selectFontIsLarge, selectIsSerif } from '../redux/themeSlice'
 
 const ListTile = ({ item }) => {
   const { colors } = useTheme()
   const router = useRouter();
   const dispatch = useDispatch();
   const isSerif = useSelector(selectIsSerif)
+  const fontIsLarge = useSelector(selectFontIsLarge)
   return (
     <ListItem containerStyle={{ borderBottomWidth: 1, }} bottomDivider onPress={() => router.push({ pathname: 'item', params: { name: item.name } })}>
 
       <ListItem.Content style={{ flexGrow: 1, }}>
-        <ListItem.Title style={{ fontWeight: 'bold', fontSize: 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>{item.name}</ListItem.Title>
-        <ListItem.Subtitle style={{ fontSize: 16, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>{item.description}</ListItem.Subtitle>
+        <ListItem.Title style={{ fontWeight: 'bold', fontSize: (fontIsLarge) ? 26 : 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>{item.name}</ListItem.Title>
+        <ListItem.Subtitle style={{ fontSize: (fontIsLarge) ? 20 : 16, fontFamily: (isSerif) ? 'serif' : 'sans-serif' }}>{item.description}</ListItem.Subtitle>
       </ListItem.Content>
       <Divider color="black" orientation="vertical" />
       <Pressable hitSlop={15} onPress={() => dispatch(toggleAsFav(item))} style={{ alignSelf: 'stretch', justifyContent: 'center' }}>

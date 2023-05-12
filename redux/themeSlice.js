@@ -6,6 +6,7 @@ export const themeSlice = createSlice({
     initialState: {
         theme: 'light',
         isSerif: false,
+        fontIsLarge: false,
     },
     reducers: {
         changeTheme: (state, action) => {
@@ -13,10 +14,14 @@ export const themeSlice = createSlice({
         },
         toggleIsSerif: (state, action) => {
             state.isSerif = !state.isSerif;
+        },
+        toggleFontSize: (state, action) => {
+            state.fontIsLarge = !state.fontIsLarge;
         }
     }
 })
-export const { changeTheme, toggleIsSerif } = themeSlice.actions
+export const { changeTheme, toggleIsSerif, toggleFontSize } = themeSlice.actions
 export default themeSlice.reducer;
 export const selectTheme = (state) => state.theme.theme
 export const selectIsSerif = (state) => state.theme.isSerif
+export const selectFontIsLarge = (state) => state.theme.fontIsLarge

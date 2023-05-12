@@ -23,6 +23,7 @@ const Preferences = () => {
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "flex-start", alignItems: "flex-start", flexDirection: "column", backgroundColor: colors.background }}>
 
+            {/* TOGGLE THEME */}
             <View style={{ ...styles.settingItem, backgroundColor: colors.card }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <Avatar
@@ -47,6 +48,8 @@ const Preferences = () => {
                     <Switch value={isDarkTheme} onValueChange={() => dispatch(toggleTheme())} trackColor={{ true: '#b2ffa8' }} thumbColor={isDarkTheme ? 'green' : 'grey'}></Switch>
                 </View>
             </View>
+
+            {/* TOGGLE FONT TYPE */}
             <View style={{ ...styles.settingItem, backgroundColor: colors.card }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <Avatar
@@ -72,7 +75,7 @@ const Preferences = () => {
                 </View>
             </View>
 
-
+            {/* TOGGLE FONT SIZE */}
             <View style={{ ...styles.settingItem, backgroundColor: colors.card }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <Avatar

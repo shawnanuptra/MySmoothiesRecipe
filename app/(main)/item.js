@@ -12,10 +12,14 @@ import { MyLightTheme } from "./util/constants";
 const ItemPage = () => {
     // try catch because router.back() rerenders the params for some reason
     try {
+        // ListItem has router.push(/items, params). useSearchParams() is used to get the parameters
         const params = useSearchParams();
+
         const dispatch = useDispatch();
         const smoothies = useSelector(selectSmoothie)
+        // get smoothie obj in smoothies[], where its name is same as params.name
         const smoothie = smoothies.find(el => el.name === params.name)
+
         const isSerif = useSelector(selectIsSerif)
         const fontIsLarge = useSelector(selectFontIsLarge)
         const isDarkTheme = useSelector(selectTheme)
@@ -25,10 +29,13 @@ const ItemPage = () => {
             <SafeAreaView style={{ flex: 1, paddingHorizontal: 30, backgroundColor: colors.background }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 15 }}>
                     <Text style={{ fontSize: (fontIsLarge) ? 28 : 24, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
-                    >{smoothie.name.charAt(0).toUpperCase() + smoothie.name.slice(1)}</Text>
+                    >
+                        {/* Capitalise first letter */}
+                        {smoothie.name.charAt(0).toUpperCase() + smoothie.name.slice(1)}
+                    </Text>
                 </View>
+                {/* Change icon style based on if smoothie is favourited */}
                 <View style={{ alignItems: 'center' }}>
-
                     <Avatar
                         onPress={() => dispatch(toggleAsFav(smoothie))}
                         rounded
@@ -37,7 +44,10 @@ const ItemPage = () => {
                         containerStyle={{ position: "absolute", bottom: 0, right: 0, borderColor: 'green', borderWidth: 1, backgroundColor: (smoothie.favourited) ? colors.card : colors.background }}
                     />
                 </View>
+
                 <Divider />
+
+                {/* DESCRIPTION  */}
                 <View style={{ marginVertical: 30 }}>
                     <Text style={{ fontSize: (fontIsLarge) ? 26 : 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}>
                         Description
@@ -46,6 +56,8 @@ const ItemPage = () => {
                         {smoothie.description}
                     </Text>
                 </View>
+
+                {/* INGREDIENTS */}
                 <View>
                     <Text style={{ fontSize: (fontIsLarge) ? 26 : 22, fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}>
                         Ingredients

@@ -26,10 +26,11 @@ const ListTile = ({ item }) => {
       <Divider color={colors.text} orientation="vertical" />
       <Pressable hitSlop={15}
         onPress={() => {
+          // Alert for action confirmation
           if (item.favourited) { Alert.alert('Removed from Favourites', `${item.name} has been removed from your favourites`) } else {
             Alert.alert('Added to Favourites', `${item.name} has been added to your Favourites`)
           }
-
+          // update in Redux
           dispatch(toggleAsFav(item))
         }} style={{ alignSelf: 'stretch', justifyContent: 'center' }}>
         {/* Change Icon to 'heart' if it's favourited */}

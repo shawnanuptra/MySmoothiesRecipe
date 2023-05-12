@@ -15,8 +15,9 @@ const Favourites = () => {
     return (
         <SafeAreaView style={{ flex: 1, flexGrow: 1, backgroundColor: colors.background }}>
             <FlatList
+                // only use smoothies where 'favourited' = true;
                 data={smoothies.filter(el => el.favourited === true)}
-                renderItem={({ item, index }) => <ListTile item={item} />}
+                renderItem={({ item }) => <ListTile item={item} />}
                 keyExtractor={smoothie => smoothie.name}
             />
         </SafeAreaView>

@@ -7,8 +7,10 @@ import { useSelector } from 'react-redux'
 import { selectFontIsLarge, selectIsSerif, selectTheme } from '../../redux/themeSlice'
 import { MyLightTheme } from './util/constants'
 const Scale = () => {
+    // multiplier to convert lbs to grams
     const multiplier = 453.59237;
 
+    // to determine which way to convert
     const [gToLbs, setGToLbs] = useState(true)
     function convert(gToLbs) {
         if (gToLbs) {
@@ -23,6 +25,8 @@ const Scale = () => {
         }
     }
 
+    //so won't display NaN
+    // doesn't filter alphabet, because mobile users will be forced to use decimal pad
     function cleanInput(value) {
         if (value.length == 0) { value = 0 }
         else {

@@ -20,6 +20,7 @@ const Add = () => {
     const dispatch = useDispatch()
     return (
         <SafeAreaView style={{ flex: 1, padding: 30, backgroundColor: colors.background }}>
+            {/* Scroll View, just in case the form gets too long */}
             <ScrollView>
 
                 <Input
@@ -29,7 +30,6 @@ const Add = () => {
                     label='Name'
                     labelStyle={{ fontSize: (fontIsLarge) ? 26 : 22, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
                     inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text, fontSize: (fontIsLarge) ? 22 : 18 }}
-
                 />
 
                 <Input
@@ -41,7 +41,6 @@ const Add = () => {
                     label='Description'
                     labelStyle={{ fontSize: (fontIsLarge) ? 26 : 22, fontWeight: 'normal', color: 'black', fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text }}
                     inputStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', color: colors.text, fontSize: (fontIsLarge) ? 22 : 18 }}
-
                 />
 
                 <Input
@@ -56,10 +55,20 @@ const Add = () => {
                 />
 
 
-                <Button title={'Add Smoothie'}
-                    titleStyle={{ fontFamily: (isSerif) ? 'serif' : 'sans-serif', fontSize: (fontIsLarge) ? 20 : 16 }}
-                    color={'green'} containerStyle={{ borderRadius: 50 }} buttonStyle={{ padding: 20 }}
-                    onPress={() => { dispatch(addSmoothie({ 'name': name, 'description': description, 'ingredients': ingredients, 'favourited': false })); router.back() }}
+                <Button
+                    title={'Add Smoothie'}
+                    titleStyle={{
+                        fontFamily: (isSerif) ? 'serif' : 'sans-serif',
+                        fontSize: (fontIsLarge) ? 20 : 16
+                    }}
+                    color={'green'}
+                    containerStyle={{ borderRadius: 50 }}
+                    buttonStyle={{ padding: 20 }}
+                    onPress={() => {
+                        // Save smoothie to redux, then go back to /browse
+                        dispatch(addSmoothie({ 'name': name, 'description': description, 'ingredients': ingredients, 'favourited': false }));
+                        router.back()
+                    }}
                     style={{ marginTop: 50 }}
                 />
             </ScrollView>

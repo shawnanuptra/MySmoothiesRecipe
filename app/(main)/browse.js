@@ -16,11 +16,10 @@ const Browse = () => {
 
     return (
         <SafeAreaView style={{ flex: 1, flexGrow: 1, backgroundColor: colors.background }}>
-            {/* FlatList from storage of 'Menu Items' */}
             <View>
                 <FlatList
                     data={smoothies}
-                    renderItem={({ item, index }) => <ListTile item={item} />}
+                    renderItem={({ item }) => <ListTile item={item} />}
                     keyExtractor={smoothie => smoothie.name}
                 />
             </View>
